@@ -1,42 +1,50 @@
 import { useActionState, useState } from "react";
-const InputForm=({ onGenerate }) =>{
-    const [url,setUrl]=useState("");
-    const[goal,setGoal]=useState("");
-    const[company,setCompany]=useState("");
-    const[tone,setTone]=useState("Professional");
+const InputForm = ({ onGenerate }) => {
+    const [url, setUrl] = useState("");
+    const [goal, setGoal] = useState("");
+    const [company, setCompany] = useState("");
+    const [tone, setTone] = useState("Professional");
 
-    const handleSubmit= (e) =>{
+    const handleSubmit = (e) => {
         e.preventDefault();
         onGenerate({ url, goal, company, tone });
     };
 
-    return(
+    return (
         <form onSubmit={handleSubmit}>
             <input
-                placeholder="Website/LinkedIn URL"
+                className="input"
+                placeholder="Website / LinkedIn URL"
                 value={url}
-                onChange={(e)=> setUrl(e.target.value)}
-            />
-
-            <input 
-                placeholder="Goal (internship, sales...)"
-                value={goal}
-                onChange={(e)=> setGoal(e,target.value)}
+                onChange={(e) => setUrl(e.target.value)}
             />
 
             <input
-                placeholder="Company"
-                value={company}
-                onChange={(e)=> setCompany(e.target.value)}
+                className="input"
+                placeholder="Goal (internship, sales...)"
+                value={goal}
+                onChange={(e) => setGoal(e.target.value)}
             />
 
-            <select onChange={(e)=> setTone(e.target.value)}>
+            <input
+                className="input"
+                placeholder="Company"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+            />
+
+            <select
+                className="input"
+                onChange={(e) => setTone(e.target.value)}
+            >
                 <option>Professional</option>
                 <option>Casual</option>
                 <option>Persuasive</option>
             </select>
 
-            <button type="submit">Generate</button>
+            <button className="button" type="submit">
+                Generate Email
+            </button>
         </form>
     );
 };
